@@ -21,20 +21,20 @@ def organizar_archivos(carpeta_descargas):
             "comprimidos": [".zip", ".rar", ".tar", ".gz", ".bz2"],
             "otros": []  # Para archivos sin una categoría clara
         }
-    # Crea las carpetas destino si no existen.
+        # Crea las carpetas destino si no existen.
         for carpeta in tipos_de_archivo:
             ruta_carpeta = os.path.join(carpeta_descargas, carpeta)
         if not os.path.exists(ruta_carpeta):
             os.makedirs(ruta_carpeta)
             print(f"Carpeta creada: {ruta_carpeta}")
 
-    # Recorre todos los archivos en la carpeta de descargas.
+            # Recorre todos los archivos en la carpeta de descargas.
             for nombre_archivo in os.listdir(carpeta_descargas):
                 ruta_archivo = os.path.join(carpeta_descargas, nombre_archivo)
 
-        # Verifica si es un archivo (no una carpeta)
+            # Verifica si es un archivo (no una carpeta)
             if os.path.isfile(ruta_archivo):
-            #Obtiene el nombre base y la extension delk archivo.
+                #Obtiene el nombre base y la extension delk archivo.
                 nombre_base, extension = os.path.splitext(nombre_archivo)
                 extension = extension.lower() # convierte la extension a minuscula
 
@@ -70,7 +70,7 @@ def organizar_por_fecha(carpeta_descargas):
                 fecha_creacion = datetime.datetime.fromtimestamp(os.path.getctime(ruta_archivo))
                 año = str(fecha_creacion.year)
                 mes = str(fecha_creacion.month)
-                carpeta_destino = os.path.join(carpeta_descargas, año, mes)
+                carpeta_destino = os.path.join(carpeta_descargas, año)
 
                 # Crea la carpeta destino si no existe
                 if not os.path.exists(carpeta_destino):
